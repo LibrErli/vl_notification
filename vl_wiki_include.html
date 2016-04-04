@@ -1,0 +1,149 @@
+<!-- 
+*****************VL-Notificationsystem**************************
+Author: Christian Erlinger UB TU Wien
+Email: erl@ub.tuwien.ac.at
+Dieses File stellt das VL-Frontendformular zur Implentierung des Benachrichtigungssystems dar. 
+
+Konfiguration
+[optional]
+-> Individuelle Anpassung der Formularfelder möglich - bitte auf die entsprechende Anpassung in den PHP-Verarbeitungsskripts achten
+
+[obligat]
+-> Zeile #110 - Bitte die URL des Drittservers auf dem die PHP-Skripts laufen eintragen!
+
+****************************************************************
+-->
+<style>
+.warn, div#warnDiv { color: #ff0000; }
+</style>
+~de~
+<h1>Anmeldung zum kostenlosen Abonnement</h1>
+<div id='warnDiv'>
+</div>
+<form id='notificSubscribe' action="" method="post">
+
+<p><input type='checkbox' name='confirm' id='confirm' /> Ja, ich möchte über jede Neuerscheinung der Zeitschrift "Der öffentliche Sektor / The Public Sector" per E-Mail informiert werden.</p>
+<table>
+<tr>
+	<td id='email_label'>E-Mail:*	</td>
+	<td><input type='text' name='email' style='width:300px;'/> <span class='warn' id='email_warn'></span></td>
+</tr>
+<tr>
+	<td id='email_conf_label'>E-Mail bestätigen:*</td>
+	<td><input type='text' name='email_confirm' style='width:300px;'/> <span class='warn'  id='email_conf_warn'></span></td>
+</tr>
+<tr>
+	<td id='firstname_label'>Vorname:</td>
+	<td><input type='text' name='firstname' style='width:300px;'/> <span class='warn' id='name_warn'></span></td></tr>
+
+<tr>
+	<td id='name_label'>Nachname:*</td>
+	<td><input type='text' name='username' style='width:300px;'/> <span class='warn' id='name_warn'></span></td></tr>
+<tr>
+	<td>Institution:</td><td> <input type='text' name='institution' style='width:300px;'/></td>
+</tr>
+<tr>
+	<td id='spam_label'>Spam-Schutz:*</td>
+	<td> <input type='text' name='muelltrenner' /> 
+		<input type='hidden' name='muelltrenner_confirm' id='muelltrenner_confirm'/> 
+		<span class='warn' id='muell_label'> </span> 
+		Bitte eintragen: <span id='whattoseperate' style='font-style:italic;'></span> </td>
+</tr>
+<tr><td></td><td> <input type='submit' name='submitNotific' value='Eintragen!' /></td></tr>
+</table>
+* Pflichtfelder	
+</form>
+~en~
+<h1>Free Subscription</h1>
+<form id='notificSubscribe' action="" method="post">
+<div id='warnDiv' >
+</div>
+<p><input type='checkbox' name='confirm' id='confirm' /> I'd like to be kept up to date by email about new issues of the journal "Der öffentliche Sektor / The Public Sector".</p>
+
+* Required Fields	
+</form>
+~all~
+
+<script>
+var muell_string = Math.random().toString(36).substring(7);
+$('#whattoseperate').html(muell_string);
+$('#muelltrenner_confirm').attr('value',muell_string);
+$('#notificSubscribe').attr('action','javascript:sendForm();');
+
+
+
+
+function sendForm(){
+if($('#confirm').is(':checked')){
+	$('#confirm').css('outline','');
+	var pruef =  [$("[name='email']"), $("[name='email_confirm']"), $("[name='username']")];
+	var warn_str = ['E-Mail Adresse', 'E-Mail Adresse best\ätigen', 'Name'];
+	var warn_span = [$('#email_warn'), $('#email_conf_warn'), $('#name_warn')];
+	var label = [$('#email_label'), $('#email_conf_label'), $('#name_label')];
+	var x = 0;
+	
+	$.each(pruef, function(i, val) {
+		if(pruef[i].val()){
+			pruef[i].css('border','');
+			warn_span[i].html('');
+			label[i].css('color','#333');
+		 } 
+		else { 
+			pruef[i].css('border','#ff0000 1px solid');
+			//warn_span[i].html(warn_str[i]);
+			label[i].css('color','#ff0000'); 
+			x++;
+		}	
+	});
+	
+	if(pruef[0].val()==pruef[1].val()){  $('#warnDiv').empty();  } 
+		else { $('#warnDiv').html('E-Mail-Adresse nicht korrekt bestätigt!'); x++; }
+		
+	if($("[name='muelltrenner_confirm']").val()!=$("[name='muelltrenner']").val()) { 
+		$('#muell_label').html('Spam-Schutz falsch!'); 
+		$("[name='muelltrenner']").css('border','#ff0000 1px solid');
+		x++;
+		}
+	else { 
+		$('#muell_label').empty(); 
+		$("[name='muelltrenner']").css('border',''); }
+		
+		
+	if(x==0) { 
+         $.ajax({
+            url: 'http://deine-domain.com/notific_subscribe.php',
+            dataType: 'jsonp',
+            data: { vl_journal: 'oes', 
+					email: $("[name='email']").val(),
+					institution: $("[name='institution']").val(),
+					username:  $("[name='username']").val(),
+					firstname: $("[name='firstname']").val(),
+					callback: 'jsonp_callback' },
+        });	
+	}	
+} else { $('#warnDiv').html('<p>Bitte zuerst Anmeldung zum Abonnement akzeptieren!</p>');
+		$('#confirm').css('outline','2px solid #ff0000');
+	}
+}
+//Ende function sendForm()
+
+//Function Callback
+function jsonp_callback(text){
+	res = $.parseJSON(text);
+	if(res.sysinfo=='Eingetragen'){
+		$('#notificSubscribe').css('display','none');
+		$('#warnDiv').html('Sie haben Sich erfolgreich für das Benachrichtungssystem des OA-Journals Der Öffentliche Sektor angemeldet!');
+		$('#warnDiv').css('color','#99cc00');
+	}
+	else if(res.sysinfo=='vorhanden') {
+		$('#notificSubscribe').css('display','none');
+		$('#warnDiv').html('Sie sind bereits mit der angegebenen E-Mailadresse im System angemeldet!');
+		$('#warnDiv').css('color','#99cc00');
+	}
+}
+//Ende Callback-Function
+
+
+</script>
+
+
