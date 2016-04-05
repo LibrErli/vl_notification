@@ -6,7 +6,20 @@
 <meta name="revisit-after" content="2 days" >
 <meta name="robots" content="index,follow" >
 <meta name="author" content="Universit&auml;tsbibliothek der TU Wien">
-<script src="../jquery/jquery-1.10.2.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "#bodytext",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste"
+    ],
+	extended_valid_elements : 'span',
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+});
+</script>
 <link rel="stylesheet" href="style.css">
 <title>VL-Extension Backend</title>
 
@@ -18,7 +31,7 @@
 		
 <?php
 include_once "inc_server.php";
-include_once "login_od.php";
+include_once "inc_login.php";
 
 
 if(isset($_SESSION['repositum_user'])){
@@ -37,19 +50,7 @@ if(isset($_SESSION['repositum_user'])){
 
 <div id="main-content"> <!--Textteil-->	
 <h1>VL-Extension - Backend</h1>
-<script type="text/javascript" src="../jquery/tinymce/tinymce.min.js"></script>
-<script type="text/javascript">
-tinymce.init({
-    selector: "#bodytext",
-    plugins: [
-        "advlist autolink lists link image charmap print preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste"
-    ],
-	extended_valid_elements : 'span',
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-});
-</script>
+
 <?php
 
 

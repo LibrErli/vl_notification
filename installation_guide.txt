@@ -1,0 +1,24 @@
+*****************Visual Library-Notificationsystem**************************
+Author: Christian Erlinger UB TU Wien
+Email: erl@ub.tuwien.ac.at
+----------------------------------------------------------------
+
+I N S T A L L A T I O N 
+-----------------------
+
+1. Import mysql_vl.sql on your mySQL-Server. A new Database named vl_extenstion will be created.
+
+2. Copy index.php, style.css and all inc_*.php files on your webserver.
+
+3. Set the correct mySQL-Server confiruation (address, username, password) in the inc_server.php file.
+
+4. Insert the basic Journal-Information to the Database Table vl_journal. Set the journalname, a journal-emailaddress (i.e. the username for the backend-login) and a password. The chosen passwordstring has to be md5-encrypted in the mysql-database, please use e.g. the following online md5-generator: http://www.adamek.biz/md5-generator.php
+
+5. Copy the content of vl_wiki_include.html to your Visual Library Installation. For detailled information about the configuration of the Visual Library-Wikifile please read the information written in the header of the vl_wiki_include.html file.
+
+6. For using the WYSIWYG-Editor for all textfields in the backend, unpack tinymce.rar in the /js/tinymce folder. Give a general attention on the necessary jQuery-file and the adresses of the related script-tags in index.php (rows 10-11) 
+
+7. Configure the Notificationsystem-Subscription-Mail in notific_subscribe.php and notific_unsubscribe.php
+
+****************************************************************
+
