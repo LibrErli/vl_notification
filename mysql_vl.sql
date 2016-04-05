@@ -16,8 +16,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Datenbank: `TUW`
+-- Datenbank: `vl_extension`
 --
+
+CREATE DATABASE vl_extension COLLATE 'utf8_general_ci';
 
 -- --------------------------------------------------------
 
@@ -25,7 +27,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Tabellenstruktur für Tabelle `vl_journal`
 --
 
-CREATE TABLE IF NOT EXISTS `vl_journal` (
+CREATE TABLE IF NOT EXISTS vl_extension.`vl_journal` (
   `vl_journal` varchar(5) NOT NULL,
   `journal_name` varchar(255) NOT NULL,
   `journal_mail` varchar(255) NOT NULL,
@@ -40,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `vl_journal` (
 -- Tabellenstruktur für Tabelle `vl_notification_mails`
 --
 
-CREATE TABLE IF NOT EXISTS `vl_notification_mails` (
+CREATE TABLE IF NOT EXISTS vl_extension.`vl_notification_mails` (
   `vl_mail_id` int(11) NOT NULL AUTO_INCREMENT,
   `vl_journal` varchar(10) NOT NULL,
   `mail` text NOT NULL,
@@ -55,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `vl_notification_mails` (
 -- Tabellenstruktur für Tabelle `vl_notific_maildata`
 --
 
-CREATE TABLE IF NOT EXISTS `vl_notific_maildata` (
+CREATE TABLE IF NOT EXISTS vl_extension.`vl_notific_maildata` (
   `vl_notific_maildata_id` int(11) NOT NULL AUTO_INCREMENT,
   `vl_journal` varchar(25) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -71,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `vl_notific_maildata` (
 -- Tabellenstruktur für Tabelle `vl_wiki`
 --
 
-CREATE TABLE IF NOT EXISTS `vl_wiki` (
+CREATE TABLE IF NOT EXISTS vl_extension.`vl_wiki` (
   `vl_wiki_id` int(11) NOT NULL AUTO_INCREMENT,
   `vl_wiki` varchar(255) NOT NULL,
   `vl_wiki_journal` varchar(10) NOT NULL,
