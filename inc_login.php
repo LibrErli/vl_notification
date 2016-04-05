@@ -1,43 +1,6 @@
-<!--<script src="jquery/jquery-1.10.2.js"></script>-->
-<style>
-
-input[type="text"], input[type="password"] {
-    background-color: #FFFFFF;
-    border-color: #FFFFFF;
-	border: 0 none;
-    font-size: 9pt;
-    height: 90%;
-	width:90%;
-    opacity: 0.5;
-}
-
-div#log {
-
-position:absolute;
-right:50px;
-top:-10px;
-height:auto;
-
-padding:10px 3px 5px 5px;
-width:170px;
-border:#006699 3px solid; 
-border-radius:10px; 
-font-size:8pt;	
-box-shadow:#666 3px 3px 6px;
-background-color:#fff;
-z-index:100;
-}
-
-</style>
-
 <?php
 
-
-
-if(isset($_GET['logout'])){
-	unset($_SESSION['TUW_UID']);
-	
-}
+if(isset($_GET['logout'])){ unset($_SESSION['TUW_UID']); }
 
 if(isset($_POST['submitLogin'])){
 	
