@@ -1,0 +1,184 @@
+* { padding: 0px; margin: 0px; }
+html, body	 { 	
+		font-family: Verdana, Geneva, sans-serif;
+		font-size: 10pt;  /* Enables font size scaling in MSIE */
+}
+a { color: #003399; text-decoration: none; }
+a:hover { text-decoration: underline; color: #999999; }
+#header { height:92px; background-color:#1569a2; height:92px;  width:100%;  }
+#header a { margin:0px; display:block; width:250px; height:90px; }
+
+#topbar { 	background: #103a59; 
+		width:100%;
+		height:25px;
+		border-top-right-radius:20px;
+		-moz-border-radius-topright: 20px;
+		-webkit-border-top-right-radius: 20px;
+		box-shadow: #999 3px 3px 5px;}
+
+
+ul#navtop {
+	right:100px;
+	float:right;
+	position: absolute;
+}
+
+
+ul#navtop li {
+    background-color: #103a59;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    float: left;
+    height: 20px;
+    list-style: outside none none;
+    margin-left: 5px;
+	padding:0 5px 0 5px;
+    position: relative;
+    text-align: center;
+    top: -18px;
+    width:auto;
+}
+
+ul#navtop li a {
+    display: block;
+    height: 100%;
+    width: 100%;
+	color:#fff;
+}
+ul#navtop li:hover {
+	background-color:#f8f8f8;
+}
+ul#navtop li a:hover {
+	text-decoration:underline;
+	color:#006699;
+}
+
+ul#topNavigation { padding: 4px 0px 0px 0; list-style:none; }
+#topNavigation li { 
+	float: left;
+	width: auto;
+	padding: 0 15px 0 15px;
+
+	border-right: 1px solid #cccbd7;
+	color:#fff;
+	 }
+#topNavigation li a { color: #fff; }
+
+
+#container2col {  padding:0; margin:0px; background:#fff; }
+		
+#navtocont0 { height:20px;
+			background: #103a59;
+			width:100%;
+			
+ }
+#navtocont1 {		width:100%;
+					background: #ffffff;
+					height: 20px;
+					-moz-border-radius-topright: 20px;
+					-webkit-border-top-right-radius: 20px;
+					border-radius: 0px 20px 0px 0px; 
+}	
+
+
+#side-bar {
+    float: left;
+    width: 240px;
+	position:relative;
+	min-height:650px;
+	background-color:#fff;
+	border-right:1px solid #e4e4e4;
+	margin-bottom:20px;
+}
+			
+
+ul.main_menu {
+    list-style-type: none;
+	width:220px;
+	color:#006699;
+	margin:0 0 30px 10px;
+
+}
+ul.main_menu  li {
+
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0;
+    display: block;
+    padding-left: 10px;
+}
+
+ul.main_menu  li a {
+    background-color: transparent;
+    color: #274e90;
+    display: block;
+    padding: 1px 1px 1px 15px;
+    text-decoration: none;
+}
+ul.main_menu  li a:hover {
+  
+    color: #003399;
+    text-decoration: underline;
+}
+ul.main_menu li:hover {
+	  background-color: #f8f8f8;
+	  }
+.menu_header { 
+	font-weight:bold; 
+	display:block; 
+	margin:10px 0 0px 10px;
+	width:205px;
+	 border-bottom:4px solid #fff; 
+	 background-color: #f8f8f8; 
+	 color: #777676;
+	 padding:1px 0 1px 15px;
+	 border-bottom:1px solid #e4e4e4;
+	 border-top:1px solid #e4e4e4;
+	 }
+			
+#main-content { background: #ffffff; color: black; clear: none; overflow: auto; line-height: 140%; font-size:10pt; padding: 1em 2em 3em 3em; margin: -1px 0 0 0; /* IE hack  height: 1%;  IE hack end */  }
+#container2col #main-content { margin-left:260px;}
+
+div#footer { 
+	font-size: 0.8em;
+	height: 60px;
+	color:#333333; 
+	background: #f8f8f8; 
+	position: relative; 
+	text-align:center; 
+	box-shadow: #999 3px 3px 5px;
+	margin: 0 0 15px 0;	
+	clear:both; 
+	}
+
+ h1 { color: #274E90; font-size: 120%; font-weight: bold; margin: 0 0 10px 0; max-width: 55em;}
+
+
+div#footwrapper {
+    float: right;
+    left: -50%;
+    position: relative;
+}
+
+ul#footercont {
+    position:relative;
+    left: 50%;
+	margin: 10px 0 0 10px;	
+}
+ul#footercont li {
+    float: left;
+    height: 150px;
+    list-style: outside none none;
+    width: auto;
+	text-align:left;
+	margin:0 5px 0 5px;
+}
+
+ul#footercont li a, .dkblau {    color: #777676; }
+img.inline_small { top:3px; position:relative; }
+
+tr.data:nth-child(even) { background-color: #8fbee5; }  
+tr.data:nth-child(odd) { background-color: #dee7ec; }
+tr.data:hover { background-color:#AEAEAE;}
+
+form#notificSubscribe input[type="text"], form#pageEdit input[type="text"] { border: 1px solid #333; color:#000; opacity:1.0; font-size:10pt; height:20px; margin-bottom:5px; padding-left:1px;}
