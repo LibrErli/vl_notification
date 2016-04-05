@@ -1,7 +1,7 @@
 <?php
-$mysql_adresse = "";
-$mysql_dbname = "";
-$mysql_user = "";
+$mysql_adresse = "localhost";
+$mysql_dbname = "vl_extension";
+$mysql_user = "root";
 $myql_pass = "";
 $db =  mysql_connect($mysql_adresse,$mysql_user,$mysql_pass);
 mysql_select_db($mysql_dbname, $db);
